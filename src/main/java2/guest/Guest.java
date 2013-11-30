@@ -17,6 +17,14 @@ public class Guest implements Serializable {
     Long id;
     private String name;
     private Date signingDate;
+    private String lessonDate;
+    private String lessonTime;
+    private String lessonDuration;
+    private String repeatFreq;
+    private String lecName;
+    private String maxAttendance;
+    private String compulsory;
+    private String venue;
     
  
     // Constructors:
@@ -26,12 +34,22 @@ public class Guest implements Serializable {
     public Guest(String name, String lessonDate, String lessonTime, String lessonDuration2, String repeatFreq2, String lecName, String maxAttendance2, String compulsory, String venue) {
         this.name = name;
         this.signingDate = new Date(System.currentTimeMillis());
+        this.lessonDate = lessonDate;
+        this.lessonTime = lessonTime;
+        this.lessonDuration = lessonDuration2;
+        this.repeatFreq = repeatFreq2;
+        this.lecName = lecName;
+        this.maxAttendance = maxAttendance2;
+        this.compulsory = compulsory;
+        this.venue = venue;
     }
  
     // String Representation:
     @Override
     public String toString() {
-        return name + " (signed on " + signingDate + ") \n ";
-    	//return changeName;
+    	String changeName = name +" "+ signingDate + " " + lessonDate + lessonTime + lessonDuration +
+    			repeatFreq + lecName + maxAttendance + compulsory + venue;
+        //return name + " (signed on " + signingDate + ") \n ";
+    	return changeName;
     }
 }
