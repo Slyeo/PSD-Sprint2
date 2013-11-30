@@ -1,6 +1,6 @@
 <html>
 <body>
 <h2>Hello World!</h2>
-<jsp:forward page="guest.html" />
+<jsp:forward page="admin.html" />
 </body>
 </html>
