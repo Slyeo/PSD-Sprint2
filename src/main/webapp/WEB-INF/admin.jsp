@@ -116,12 +116,20 @@ body  {
            <p> Venue: <input type="text" name="venue" /></p>
             <input type="submit" value="Add" /></p>
         </form>
+        
+        <% if(request.getParameter("lecName") != null) { %>
         <hr><ol> 
+        New session successfully added!
+        </ol><hr>
+		<% } %>
+		
+		<hr><ol> 
         <% for (Admin list : adminDao.getAllGuests()) { %>
             <li> <%= list %> </li>
         <% } %>
         </ol><hr>
  
+ 		<hr><ol> 
         <p>Copyright @ Fantastic 4, Team 6.</p>
     <!-- end #mainContent --></div>
 	<br class="clearfloat" />
