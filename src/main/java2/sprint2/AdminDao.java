@@ -24,4 +24,28 @@ public class AdminDao {
             "SELECT g FROM Admin g ORDER BY g.id", Admin.class);
         return query.getResultList();
     }
+    
+    public List<Admin> getDrLiewTiming() {
+        TypedQuery<Admin> query = em.createQuery(
+            "SELECT g FROM Admin g WHERE g.lecName = 'Dr. Liew Pak San'", Admin.class);
+        return query.getResultList();
+    }
+    
+    public List<Admin> getDrStevenTiming() {
+        TypedQuery<Admin> query = em.createQuery(
+            "SELECT g FROM Admin g WHERE g.lecName = 'Dr. Steven Goh'", Admin.class);
+        return query.getResultList();
+    }
+    
+    public List<Admin> getDrAlvisTiming() {
+        TypedQuery<Admin> query = em.createQuery(
+            "SELECT g FROM Admin g WHERE g.lecName = 'Dr. Alvis Fong'", Admin.class);
+        return query.getResultList();
+    }
+    
+    public List<Admin> getDrKeohTiming() {
+        TypedQuery<Admin> query = em.createQuery(
+            "SELECT g FROM Admin g WHERE g.lecName = 'Dr. Keoh Sye Loong'", Admin.class);
+        return query.getResultList();
+    }
 }
