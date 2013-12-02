@@ -103,7 +103,7 @@ body  {
         <hr><ol> 
         Lecturer Name, Date, Time, Freq, Duration, Capacity, Compulsory, Location<br>
         <br>
-        <% for (Admin list : adminDao.getDrLiewTiming()) { %>
+        <% for (Admin list : adminDao.getLecTiming(request.getParameter("lecName"))) { %>
             <li> <%= list %> </li>
         <% } %>
         </ol><hr>
@@ -113,7 +113,7 @@ body  {
         <hr><ol> 
         Lecturer Name, Date, Time, Freq, Duration, Capacity, Compulsory, Location<br>
         <br>
-        <% for (Admin list : adminDao.getDrStevenTiming()) { %>
+        <% for (Admin list : adminDao.getLecTiming(request.getParameter("lecName"))) { %>
             <li> <%= list %> </li>
         <% } %>
         </ol><hr>
@@ -123,7 +123,7 @@ body  {
         <hr><ol> 
         Lecturer Name, Date, Time, Freq, Duration, Capacity, Compulsory, Location<br>
         <br>
-        <% for (Admin list : adminDao.getDrAlvisTiming()) { %>
+        <% for (Admin list : adminDao.getLecTiming(request.getParameter("lecName"))) { %>
             <li> <%= list %> </li>
         <% } %>
         </ol><hr>
@@ -133,7 +133,7 @@ body  {
         <hr><ol> 
         Lecturer Name, Date, Time, Freq, Duration, Capacity, Compulsory, Location<br>
         <br>
-        <% for (Admin list : adminDao.getDrKeohTiming()) { %>
+        <% for (Admin list : adminDao.getLecTiming(request.getParameter("lecName"))) { %>
             <li> <%= list %> </li>
         <% } %>
         </ol><hr>
@@ -141,6 +141,7 @@ body  {
  		
  		<hr><ol> 
         <p>Copyright @ Fantastic 4, Team 6.</p>
+        <input type="submit" value="Logout" />
     <!-- end #mainContent --></div>
 	<br class="clearfloat" />
 <!-- end #container --></div>

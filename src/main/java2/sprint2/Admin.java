@@ -14,6 +14,7 @@ public class Admin implements Serializable {
     @Id @GeneratedValue
     Long id;
     private String lecName;
+    private String courseName;
     private String lessonDate;
     private String lessonTime;
     private String lessonDuration;
@@ -27,13 +28,14 @@ public class Admin implements Serializable {
     public Admin() {
     }
  
-    public Admin(String lecName, String lessonDate, String lessonTime, String lessonDuration2, String repeatFreq2, String maxAttendance2, String compulsory, String venue) {
+    public Admin(String lecName, String courseName, String lessonDate, String lessonTime, String lessonDuration, String repeatFreq, String maxAttendance, String compulsory, String venue) {
         this.lecName = lecName;
+        this.courseName = courseName;
         this.lessonDate = lessonDate;
         this.lessonTime = lessonTime;
-        this.lessonDuration = lessonDuration2;
-        this.repeatFreq = repeatFreq2;
-        this.maxAttendance = maxAttendance2;
+        this.lessonDuration = lessonDuration;
+        this.repeatFreq = repeatFreq;
+        this.maxAttendance = maxAttendance;
         this.compulsory = compulsory;
         this.venue = venue;
     }
@@ -41,9 +43,81 @@ public class Admin implements Serializable {
     // String Representation:
     @Override
     public String toString() {
-    	String changeName = lecName +" " + lessonDate+" " + lessonTime+" " + lessonDuration+" " +
+    	String changeName = lecName + " " + courseName +" " + lessonDate+" " + lessonTime+" " + lessonDuration+" " +
     			repeatFreq+" " + maxAttendance+" " +compulsory +" " + venue;
         //return name + " (signed on " + signingDate + ") \n ";
     	return changeName;
+    }
+    
+    public void setLecName(String lecName){
+    	this.lecName = lecName;
+    }
+    
+    public String getLecName(){
+    	return lecName;
+    }
+    
+    public void setCourseName(String courseName){
+    	this.courseName = courseName;
+    }
+    
+    public String getCourseName(){
+    	return courseName;
+    }
+    
+    public void setLessonDate(String lessonDate){
+    	this.lessonDate = lessonDate;
+    }
+    
+    public String getLessonDate(){
+    	return lessonDate;
+    }
+    
+    public void setLessonTime(String lessonTime){
+    	this.lessonTime = lessonTime;
+    }
+    
+    public String getLessonTime(){
+    	return lessonTime;
+    }
+    
+    public void setLessonDuration(String lessonDuration){
+    	this.lessonDuration = lessonDuration;
+    }
+    
+    public String getLessonDuration(){
+    	return lessonDuration;
+    }
+    
+    public void setRepeatFreq(String repeatFreq){
+    	this.repeatFreq = repeatFreq;
+    }
+    
+    public String getRepeatFreq(){
+    	return repeatFreq;
+    }
+    
+    public void setMaxAttendance(String maxAttendance){
+    	this.maxAttendance = maxAttendance;
+    }
+    
+    public String getMaxAttendance(){
+    	return maxAttendance;
+    }
+    
+    public void setCompulsory(String compulsory){
+    	this.compulsory = compulsory;
+    }
+    
+    public String getCompulsory(){
+    	return compulsory;
+    }
+    
+    public void setVenue(String venue){
+    	this.venue = venue;
+    }
+    
+    public String getVenue(){
+    	return venue;
     }
 }

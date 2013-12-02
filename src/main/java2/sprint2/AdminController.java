@@ -20,6 +20,7 @@ public class AdminController {
     public ModelAndView lectureSession(HttpServletRequest request) {
         // Handle a new guest (if any):
     	String lecName = request.getParameter("lecName");
+    	String courseName = request.getParameter("courseName");
         String lessonDate = request.getParameter("lessonDate");
         String lessonTime = request.getParameter("lessonTime");
         String lessonDuration= request.getParameter("lessonDuration");
@@ -29,18 +30,19 @@ public class AdminController {
         String venue = request.getParameter("venue");
         
         if (lecName != null){
-        	
-        	adminDao.persist(new Admin(lecName, lessonDate, lessonTime, lessonDuration, repeatFreq, maxAttendance, compulsory, venue));
+        	adminDao.persist(new Admin(lecName, courseName, lessonDate, lessonTime, lessonDuration, repeatFreq, maxAttendance, compulsory, venue));
         }
         return new ModelAndView("admin.jsp", "adminDao", adminDao);
     }
     
     @RequestMapping(value="/user")
     public ModelAndView lectureSusSession(HttpServletRequest request) {
-    	adminDao.getDrAlvisTiming();
+    	String lecName = request.getParameter("lecName");
+    	/*adminDao.getDrAlvisTiming();
     	adminDao.getDrKeohTiming();
-    	adminDao.getDrLiewTiming();
-    	adminDao.getDrStevenTiming();
+    	adminDao.getDrLiewTiming(lecName);
+    	adminDao.getDrStevenTiming();*/
+    	adminDao.getLecTiming(lecName);
     	return new ModelAndView("user.jsp", "adminDao", adminDao);
     }
 }

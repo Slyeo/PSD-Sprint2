@@ -95,6 +95,13 @@ body  {
             <option>Dr. Alvis Fong</option>
             <option>Dr. Keoh Sye Loong</option>
           </select></p>    
+           <p>Course Name:  <select name="courseName" id="courseName">
+            <option>Professional Software Development3</option>
+            <option>Algorithm 3</option>
+            <option>Advanced Programming 3</option>
+            <option>Interactive Systems 3</option>
+            <option>Programming Languages 3</option>
+          </select></p>    
            <p> Lesson Date: <input type="text" id="datepicker" name="lessonDate" /></p>
            <p> Lesson Time: <input type="text" name="lessonTime" /></p>
           <p>  Lesson Duration: <select name="lessonDuration" id="lessonDuration">
@@ -107,13 +114,19 @@ body  {
             <option>3 hour 30mins</option>
             <option>4 hour</option>
           </select></p>   
-           <p> Repeat Frequency: <input type="text" name="repeatFreq" /></p>
+           <p>Repeat Frequency:  <select name="repeatFreq" id="repeatFreq">
+            <option>Daily</option>
+            <option>Weekly</option>
+            <option>Monthly</option>
+          </select></p>    
            <p> Max Attendance: <input type="text" name="maxAttendance" maxlength="4" /></p>
           <p>  Compulsory: 
          Yes: <input type="radio" name="compulsory" id="compulsory" value="Yes" checked>
           No:<input type="radio" name="compulsory" id="compulsory" value="No">
           </p>
-           <p> Venue: <input type="text" name="venue" /></p>
+           <p> Venue: <select name="venue" id="venue" />
+           <option>RP, E5L3, Lecture Hall</option>
+            <option>RP, E6L1, Lab</option>
             <input type="submit" value="Add" /></p>
         </form>
         

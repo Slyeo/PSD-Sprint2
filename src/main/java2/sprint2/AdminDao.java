@@ -25,9 +25,9 @@ public class AdminDao {
         return query.getResultList();
     }
     
-    public List<Admin> getDrLiewTiming() {
+    public List<Admin> getDrLiewTiming(String getVal) {
         TypedQuery<Admin> query = em.createQuery(
-            "SELECT g FROM Admin g WHERE g.lecName = 'Dr. Liew Pak San'", Admin.class);
+            "SELECT g FROM Admin g WHERE g.lecName = '"+ getVal + "'", Admin.class);
         return query.getResultList();
     }
     
@@ -46,6 +46,12 @@ public class AdminDao {
     public List<Admin> getDrKeohTiming() {
         TypedQuery<Admin> query = em.createQuery(
             "SELECT g FROM Admin g WHERE g.lecName = 'Dr. Keoh Sye Loong'", Admin.class);
+        return query.getResultList();
+    }
+    
+    public List<Admin> getLecTiming(String getVal) {
+        TypedQuery<Admin> query = em.createQuery(
+            "SELECT g FROM Admin g WHERE g.lecName = '"+ getVal + "'", Admin.class);
         return query.getResultList();
     }
 }
