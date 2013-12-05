@@ -1,5 +1,6 @@
 <%@page contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@page import="sprint2.*"%>
+ <%@page import="java.util.ArrayList" %>
  
 <jsp:useBean id="adminDao" type="sprint2.AdminDao" scope="request" />
  
@@ -22,7 +23,7 @@ body  {
 
 
 .twoColElsLt #container { 
-	width: 46em;  
+	width: 70em;  
 	background: #FFFFFF;
 	margin: 0 auto; 
 	border: 1px solid #000000;
@@ -89,59 +90,70 @@ body  {
   
   		<h1>Select Lecturer's name</h1>
         <form method="POST" action="user.html"></p>
-           <p>Lecturer Name:  <select name="lecName" id="lecName">
-            <option>Dr. Liew Pak San</option>
-            <option>Dr. Steven Goh</option>
-            <option>Dr. Alvis Fong</option>
-            <option>Dr. Keoh Sye Loong</option>
+           <p>Course Name:  <select name="courseName" id="courseName">
+            <option>PSD3</option>
+            <option>ALG3</option>
+            <option>AP3</option>
+            <option>IS3</option>
+            <option>PL3</option>
           </select> 
           <input type="submit" value="Select" /></p>
         </form> 
         </form>
-        
-        <% if("Dr. Liew Pak San".equals(request.getParameter("lecName"))) { %>
-        <hr><ol> 
-        Lecturer Name, Date, Time, Freq, Duration, Capacity, Compulsory, Location<br>
+        <hr>
+        <% if("PSD3".equals(request.getParameter("courseName"))) { %>
+        <table border="1">
+        <th>Lecturer</th><th>C. Name</th><th>Date</th><th>Time</th><th>Duration</th><th>Freq</th><th>Capacity</th><th>Compulsory</th><th>Location</th><th>Choose</th><br>
         <br>
-        <% for (Admin list : adminDao.getLecTiming(request.getParameter("lecName"))) { %>
-            <li> <%= list %> </li>
+        <% for (Admin list : adminDao.getLecTiming(request.getParameter("courseName"))) { %>
+            <%= list %>
+            
         <% } %>
-        </ol><hr>
 		<% } %>
 		
- 		<% if("Dr. Steven Goh".equals(request.getParameter("lecName"))) { %>
-        <hr><ol> 
-        Lecturer Name, Date, Time, Freq, Duration, Capacity, Compulsory, Location<br>
+ 		<% if("ALG3".equals(request.getParameter("courseName"))) { %>
+ 		<table border="1">
+        <th>Lecturer</th><th>C. Name</th><th>Date</th><th>Time</th><th>Duration</th><th>Freq</th><th>Capacity</th><th>Compulsory</th><th>Location</th><br>
         <br>
-        <% for (Admin list : adminDao.getLecTiming(request.getParameter("lecName"))) { %>
-            <li> <%= list %> </li>
+        <% for (Admin list : adminDao.getLecTiming(request.getParameter("courseName"))) { %>
+            <%= list %>
         <% } %>
-        </ol><hr>
 		<% } %>
  		
- 		<% if("Dr. Alvis Fong".equals(request.getParameter("lecName"))) { %>
-        <hr><ol> 
-        Lecturer Name, Date, Time, Freq, Duration, Capacity, Compulsory, Location<br>
+ 		<% if("AP3".equals(request.getParameter("courseName"))) { %>
+ 		 <table border="1">
+        <th>Lecturer</th><th>C. Name</th><th>Date</th><th>Time</th><th>Duration</th><th>Freq</th><th>Capacity</th><th>Compulsory</th><th>Location</th><br>
         <br>
-        <% for (Admin list : adminDao.getLecTiming(request.getParameter("lecName"))) { %>
-            <li> <%= list %> </li>
+        <% for (Admin list : adminDao.getLecTiming(request.getParameter("courseName"))) { %>
+            <%= list %>
         <% } %>
-        </ol><hr>
 		<% } %>
  		
- 		<% if("Dr. Keoh Sye Loong".equals(request.getParameter("lecName"))) { %>
-        <hr><ol> 
-        Lecturer Name, Date, Time, Freq, Duration, Capacity, Compulsory, Location<br>
-        <br>
-        <% for (Admin list : adminDao.getLecTiming(request.getParameter("lecName"))) { %>
-            <li> <%= list %> </li>
+ 		<% if("IS3".equals(request.getParameter("courseName"))) { %> <table border="1">
+        <th>Lecturer</th><th>C. Name</th><th>Date</th><th>Time</th><th>Duration</th><th>Freq</th><th>Capacity</th><th>Compulsory</th><th>Location</th><br>
+        <br>	
+        <% for (Admin list : adminDao.getLecTiming(request.getParameter("courseName"))) { %>
+            <%= list %>
         <% } %>
-        </ol><hr>
 		<% } %>
+		
+		<% if("PL3".equals(request.getParameter("courseName"))) { %> <table border="1">
+        <th>Lecturer</th><th>C. Name</th><th>Date</th><th>Time</th><th>Duration</th><th>Freq</th><th>Capacity</th><th>Compulsory</th><th>Location</th><br>
+        <br>	
+        <% for (Admin list : adminDao.getLecTiming(request.getParameter("courseName"))) { %>
+            <%= list %>
+        <% } %>
+		<% } %>
+		
+ 		</table>
  		
- 		<hr><ol> 
+ 		
+		
+ 		
+ 		<hr>
         <p>Copyright @ Fantastic 4, Team 6.</p>
-        <input type="submit" value="Logout" />
+        <form method="POST" action="index.jsp"></p>
+        <input type="submit" value="Logout" /></form>
     <!-- end #mainContent --></div>
 	<br class="clearfloat" />
 <!-- end #container --></div>

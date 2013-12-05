@@ -1,5 +1,6 @@
 <%@page contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@page import="sprint2.*"%>
+
  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
@@ -96,7 +97,14 @@ body  {
 			 <br>
 			 <font color="red">Please re-enter the username and password! </font>
 			 <br>
-		<% } %>
+		<% } 
+		
+		User users = new User();
+ 		
+ 		for(int i=0; i<users.size; i++){
+ 			out.println(users.getStuName);
+ 		}
+		%>
  
  		<hr><ol> 
         <p>Copyright @ Fantastic 4, Team 6.</p>

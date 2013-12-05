@@ -7,7 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.ui.Model;
  
+import java.util.ArrayList;
+
 @Controller
 @Transactional
 public class AdminController {
@@ -45,4 +48,11 @@ public class AdminController {
     	adminDao.getLecTiming(lecName);
     	return new ModelAndView("user.jsp", "adminDao", adminDao);
     }
+    
+    
+    @RequestMapping("/index")
+	public String loadHomePage(Model m) {
+		
+		return "index";
+	}
 }
