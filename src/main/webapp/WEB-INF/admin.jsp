@@ -137,11 +137,6 @@ body  {
         </ol><hr>
 		<% } %>
 		
-		<hr><ol> 
-        <% for (Admin list : adminDao.getAllGuests()) { %>
-            <li> <%= list %> </li>
-        <% } %>
-        </ol><hr>
  
  		<hr><ol> 
         <p>Copyright @ Fantastic 4, Team 6.</p>
