@@ -44,7 +44,7 @@ public class Admin implements Serializable {
     @Override
     public String toString() {
     	String changeName = "<tr><td>" + lecName + "</td><td>" + courseName +"</td><td>" + lessonDate+"</td><td>" + lessonTime+"</td><td>" + lessonDuration+"</td><td>" +
-    			repeatFreq+"</td><td>" + maxAttendance+"</td><td>" +compulsory +"</td><td>" + venue + "</td><td><input type=\"checkbox\" name=\"courseName\" value=\"request.getParameter(\"courseName\")%></td></tr>";
+    			repeatFreq+"</td><td>" + maxAttendance+"</td><td>" +compulsory +"</td><td>" + venue + "</td></tr>";
         //return name + " (signed on " + signingDate + ") \n ";
     	return changeName;
     }

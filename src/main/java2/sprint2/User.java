@@ -2,6 +2,7 @@ package sprint2;
  
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,20 +17,21 @@ public class User implements Serializable {
     Long id;
     private String stuUser;
     private String stuPass;
+    private String stuAccess;
     private String stuName;
     private String stuCourse;
     private String stuContact;
     
-    ArrayList<User> inputUser = new ArrayList<User>();
+    List<User> inputUser = new ArrayList<User>();
     
     // Constructors:
     public User() {
     	
-    	User u1 = new User("user", "user", "WW", "", "9991234");
-		User u2 = new User("admin", "admin", "WW2", "", "9991235");
-		User u3 = new User("test1", "test1", "Daemian", "", "99999999");
-		User u4 = new User("test2", "test2", "Yee Keng", "", "99987654");
-		User u5 = new User("test3", "test3", "Boon Keong", "", "99915432");
+    	User u1 = new User("user", "user","2", "WW", "", "9991234");
+		User u2 = new User("admin", "admin","1", "WW2", "", "9991235");
+		User u3 = new User("test1", "test1","2", "Daemian", "", "99999999");
+		User u4 = new User("test2", "test2","2", "Yee Keng", "", "99987654");
+		User u5 = new User("test3", "test3","2", "Boon Keong", "", "99915432");
 		
 		inputUser.add(u1);
 		inputUser.add(u2);
@@ -38,12 +40,17 @@ public class User implements Serializable {
 		inputUser.add(u5);
     }
  
-    public User(String stuUser, String stuPass, String stuName, String stuCourse, String stuContact) {
+    public User(String stuUser, String stuPass, String stuAccess, String stuName, String stuCourse, String stuContact) {
         this.stuUser = stuUser;
         this.stuPass = stuPass;
+        this.stuAccess = stuAccess;
         this.stuName = stuName;
         this.stuCourse = stuCourse;
         this.stuContact = stuContact;
+    }
+    
+    public List<User> getAllUser(){
+    	return inputUser;
     }
 
 	public String getStuUser() {
@@ -63,6 +70,14 @@ public class User implements Serializable {
 
 	public String getStuPass() {
 		return stuPass;
+	}
+	
+	public void setStuAccess(String stuAccess) {
+		this.stuAccess = stuAccess;
+	}
+
+	public String getStuAccess() {
+		return stuAccess;
 	}
 
 	public void setStuPass(String stuPass) {

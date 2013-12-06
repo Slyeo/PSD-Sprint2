@@ -8,8 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.ui.Model;
- 
-import java.util.ArrayList;
 
 @Controller
 @Transactional
@@ -17,6 +15,8 @@ public class AdminController {
  
     @Autowired
     private AdminDao adminDao;
+    
+    String userName;
  
     @Transactional
     @RequestMapping(value="/admin")
@@ -39,20 +39,26 @@ public class AdminController {
     }
     
     @RequestMapping(value="/user")
-    public ModelAndView lectureSusSession(HttpServletRequest request) {
+    public ModelAndView lectureSusSession(HttpServletRequest request, Model m) {
     	String lecName = request.getParameter("lecName");
     	/*adminDao.getDrAlvisTiming();
     	adminDao.getDrKeohTiming();
     	adminDao.getDrLiewTiming(lecName);
     	adminDao.getDrStevenTiming();*/
+    	m.addAttribute("username",  request.getParameter("userName"));
     	adminDao.getLecTiming(lecName);
     	return new ModelAndView("user.jsp", "adminDao", adminDao);
     }
     
     
     @RequestMapping("/index")
-	public String loadHomePage(Model m) {
-		
-		return "index";
+    public ModelAndView loadHomePage(HttpServletRequest request, Model m) {
+    	userName = request.getParameter("userName");
+		m.addAttribute("username", userName);
+		return new ModelAndView("index.jsp", "adminDao", adminDao);
 	}
+    /*public String loadHomePage(Model m) {
+    	m.addAttribute("username", "WinWin");
+    	return "index";
+    }*/
 }

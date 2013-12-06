@@ -77,33 +77,37 @@ body  {
   		<h1>Login Page</h1>
   		
   		<form method="post">
-		Login ID: <input type="text" name="username">
+		Login ID: <input type="text" name="userName">
 		<br />
-		Password: <input type="password" name="password" />
+		Password: <input type="password" name="password"/>
 		<br />
 		<input type="submit" value="Submit" />
 		
 		</form>
   		
-  		<% if ("admin".equals(request.getParameter("username")) && "admin".equals(request.getParameter("password"))) { %>
+  		<% 
+  		User users = new User();
+  		String users2, accessLvl;
+  		for(User v: users.getAllUser()){
+  		
+  		users2 = v.getStuUser();
+  		accessLvl = v.getStuAccess();
+  		
+  		if (v.getStuUser().equals(request.getParameter("userName")) && v.getStuPass().equals(request.getParameter("password")) && v.getStuAccess().equals("1") ) { %>
 			<jsp:forward page="admin.html" />
 		<% } 
 		
-		else if ("user".equals(request.getParameter("username")) && "user".equals(request.getParameter("password"))) { %>
+		else if (v.getStuUser().equals(request.getParameter("userName")) && v.getStuPass().equals(request.getParameter("password")) && v.getStuAccess().equals("2") ) { %>
 			<jsp:forward page="user.html" />
 		<% } 
 		
-		if(request.getParameter("username") != null && request.getParameter("password") != null ) { %>
+ 		}
+ 		
+ 		if(request.getParameter("userName") != null && request.getParameter("password") != null ) { %>
 			 <br>
 			 <font color="red">Please re-enter the username and password! </font>
 			 <br>
 		<% } 
-		
-		User users = new User();
- 		
- 		for(int i=0; i<users.size; i++){
- 			out.println(users.getStuName);
- 		}
 		%>
  
  		<hr><ol> 

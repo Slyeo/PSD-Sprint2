@@ -88,9 +88,13 @@ body  {
   <!-- end #sidebar1 --></div>
   <div id="mainContent">
   
-  		<h1>Select Lecturer's name</h1>
+  		<%
+  		
+  		%>
+  
+  		<h1>View course timetable </h1>
         <form method="POST" action="user.html"></p>
-           <p>Course Name:  <select name="courseName" id="courseName">
+           <p>View Course:  <select name="courseName" id="courseName">
             <option>PSD3</option>
             <option>ALG3</option>
             <option>AP3</option>
@@ -101,9 +105,11 @@ body  {
         </form> 
         </form>
         <hr>
-        <% if("PSD3".equals(request.getParameter("courseName"))) { %>
+        <% 
+        
+        if("PSD3".equals(request.getParameter("courseName"))) { %>
         <table border="1">
-        <th>Lecturer</th><th>C. Name</th><th>Date</th><th>Time</th><th>Duration</th><th>Freq</th><th>Capacity</th><th>Compulsory</th><th>Location</th><th>Choose</th><br>
+        <th>Lecturer</th><th>C. Name</th><th>Date</th><th>Time</th><th>Duration</th><th>Freq</th><th>Capacity</th><th>Compulsory</th><th>Location</th><br>
         <br>
         <% for (Admin list : adminDao.getLecTiming(request.getParameter("courseName"))) { %>
             <%= list %>
@@ -146,9 +152,6 @@ body  {
 		<% } %>
 		
  		</table>
- 		
- 		
-		
  		
  		<hr>
         <p>Copyright @ Fantastic 4, Team 6.</p>
