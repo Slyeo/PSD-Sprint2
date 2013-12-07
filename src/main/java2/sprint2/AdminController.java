@@ -1,5 +1,10 @@
 package sprint2;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.SortedMap;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +21,7 @@ public class AdminController {
     @Autowired
     private AdminDao adminDao;
     
-    String userName;
+    static String userName;
  
     @Transactional
     @RequestMapping(value="/admin")
@@ -40,25 +45,58 @@ public class AdminController {
     
     @RequestMapping(value="/user")
     public ModelAndView lectureSusSession(HttpServletRequest request, Model m) {
-    	String lecName = request.getParameter("lecName");
+
+    	String courseName = request.getParameter("courseName");
+    	if(request.getParameter("userName") != null){
+        	userName = request.getParameter("userName");
+        	
+        }
+        m.addAttribute("username",  userName);
+       
     	/*adminDao.getDrAlvisTiming();
     	adminDao.getDrKeohTiming();
     	adminDao.getDrLiewTiming(lecName);
     	adminDao.getDrStevenTiming();*/
-    	m.addAttribute("username",  request.getParameter("userName"));
-    	adminDao.getLecTiming(lecName);
+        HashSet<String> test = new HashSet<String>();
+        for (Admin list : adminDao.getAllGuests()) {
+        	test.add("Hello");
+        	test.remove(list);
+        } 
+        
+    	adminDao.getLecTiming(courseName);
     	return new ModelAndView("user.jsp", "adminDao", adminDao);
     }
     
     
     @RequestMapping("/index")
     public ModelAndView loadHomePage(HttpServletRequest request, Model m) {
-    	userName = request.getParameter("userName");
-		m.addAttribute("username", userName);
 		return new ModelAndView("index.jsp", "adminDao", adminDao);
 	}
     /*public String loadHomePage(Model m) {
     	m.addAttribute("username", "WinWin");
     	return "index";
     }*/
+    
+    @RequestMapping(value="/date")
+    public ModelAndView stuViewSession(HttpServletRequest request, Model m) {
+
+    	/*String courseName = request.getParameter("courseName");
+    	if(request.getParameter("userName") != null){
+        	userName = request.getParameter("userName");
+        	
+        }
+        m.addAttribute("username",  userName);
+    	
+    	adminDao.getLecTiming(courseName);*/
+    	String courseName = null;
+    	
+    	if(request.getParameter("userName") != null){
+        	userName = request.getParameter("userName");
+        	courseName = request.getParameter("courseName");
+        }
+        m.addAttribute("username",  userName);
+        m.addAttribute("coursename", courseName);
+    	
+    	return new ModelAndView("date.jsp", "adminDao", adminDao);
+    }
 }

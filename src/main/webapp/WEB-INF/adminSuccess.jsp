@@ -1,7 +1,7 @@
 <%@page contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@page import="sprint2.*"%>
  
-<jsp:useBean id="adminDao" type="sprint2.AdminDao" scope="request" />
+ <jsp:useBean id="adminDao2" type="sprint2.AdminDao" scope="request" />
  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
@@ -88,62 +88,45 @@ body  {
   <div id="mainContent">
   
   		<h1>Admin add new teaching session</h1>
-        <form method="POST" action="admin.html"></p>
+        <form method="POST" action="adminSuccess.html"></p>
            <p>Lecturer Name:  <select name="lecName" id="lecName">
             <option>Dr. Liew Pak San</option>
             <option>Dr. Steven Goh</option>
             <option>Dr. Alvis Fong</option>
             <option>Dr. Keoh Sye Loong</option>
           </select></p>    
-           <p>Course Name:  <select name="courseName" id="courseName">
-            <option>PSD3</option>
-            <option>ALG3</option>
-            <option>AP3</option>
-            <option>IS3</option>
-            <option>PL3</option>
-          </select></p>    
            <p> Lesson Date: <input type="text" id="datepicker" name="lessonDate" /></p>
-           <p> Lesson Time: <input type="time" name="lessonTime" /></p>
+           <p> Lesson Time: <input type="text" name="lessonTime" /></p>
           <p>  Lesson Duration: <select name="lessonDuration" id="lessonDuration">
             <option>30 min</option>
-            <option>1 hr</option>
-            <option>1 hr 30 mins</option>
-            <option>2 hr</option>
-            <option>2 hr 30 mins</option>
-            <option>3 hr</option>
-            <option>3 hr 30 mins</option>
-            <option>4 hr</option>
+            <option>1 hour</option>
+            <option>1 hour 30 mins</option>
+            <option>2 hour</option>
+            <option>2 hour 30 mins</option>
+            <option>3 hour</option>
+            <option>3 hour 30mins</option>
+            <option>4 hour</option>
           </select></p>   
-           <p>Repeat Frequency:  <select name="repeatFreq" id="repeatFreq">
-            <option>Daily</option>
-            <option>Weekly</option>
-            <option>Monthly</option>
-          </select></p>    
-           <p> Max Attendance: <input type="number" name="maxAttendance" maxlength="4" min="1" max="999" /></p>
+           <p> Repeat Frequency: <input type="text" name="repeatFreq" /></p>
+           <p> Max Attendance: <input type="text" name="maxAttendance" maxlength="4" /></p>
           <p>  Compulsory: 
          Yes: <input type="radio" name="compulsory" id="compulsory" value="Yes" checked>
           No:<input type="radio" name="compulsory" id="compulsory" value="No">
           </p>
-           <p> Venue: <select name="venue" id="venue" />
-           <option>RP, E5L3, Lecture Hall</option>
-            <option>RP, E6L1, Lab</option></p>
-            <br>
-            <p><input type="submit" value="Add" /></p>
+           <p> Venue: <input type="text" name="venue" /></p>
+            <input type="submit" value="Add" /></p>
         </form>
-        
-        <% if(request.getParameter("lecName") != null) { %>
         <hr><ol> 
-        New session successfully added!
+        New Session Added
         </ol><hr>
-		<% } %>
-		 <% for (Admin list : adminDao.getAllGuests()) { %>
-            <%= list %>
-        <% } %>
  
  		<hr><ol> 
+        <% for (Admin list : adminDao2.getAllGuests()) { %>
+            <li> <%= list %> </li>
+        <% } %>
+        </ol><hr>
+        
         <p>Copyright @ Fantastic 4, Team 6.</p>
-        <form method="POST" action="index.jsp"></p>
-        <input type="submit" value="Logout" /></form>
     <!-- end #mainContent --></div>
 	<br class="clearfloat" />
 <!-- end #container --></div>

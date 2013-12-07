@@ -1,5 +1,7 @@
 <%@page contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@page import="sprint2.*"%>
+<jsp:useBean id="setUserProperty" class="sprint2.User" scope="session"/>
+<jsp:setProperty name="setUserProperty" property="*"/>
 
  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"

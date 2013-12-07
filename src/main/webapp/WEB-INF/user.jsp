@@ -1,8 +1,12 @@
 <%@page contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@page import="sprint2.*"%>
- <%@page import="java.util.ArrayList" %>
+ <%@page import="java.util.HashSet" %>
  
 <jsp:useBean id="adminDao" type="sprint2.AdminDao" scope="request" />
+
+<jsp:useBean id="setUserProperty" class="sprint2.User" scope="session"/>
+<jsp:setProperty name="setUserProperty" property="*"/>
+
  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
@@ -77,6 +81,7 @@ body  {
   });
   </script>
   
+  
     </head>
  
    <body class="twoColElsLt">
@@ -90,22 +95,42 @@ body  {
   
   		<%
   		
+  		
+  		User users = new User();
+  		HashSet<String> courses = new HashSet<String>();
+        for (Admin list : adminDao.getAllGuests()) {
+        	courses.add(list.getCourseName());
+        } 
+        
   		%>
   
-  		<h1>View course timetable </h1>
+  		<h1>Welcome ${username}, View course timetable</h1>
         <form method="POST" action="user.html"></p>
-           <p>View Course:  <select name="courseName" id="courseName">
-            <option>PSD3</option>
-            <option>ALG3</option>
-            <option>AP3</option>
-            <option>IS3</option>
-            <option>PL3</option>
+         <input type="hidden" name="getUserName" id="getUserName" value="${username}" />
+           <p>Sign up for Courses:  <select name="courseName" id="courseName">
+           <%
+	        for(String v : courses){
+	        	%><option><%out.println(v);%></option><%
+			}
+           %>
+            
           </select> 
-          <input type="submit" value="Select" /></p>
+          <input type="submit" value="Sign Up!" /></p>
         </form> 
         </form>
+        <a href="date.html">View Timetable</a>
         <hr>
-        <% 
+        <% 	
+       	//out.println(request.getParameter("getUserName"));
+        for(User u : users.getAllUser()){
+        	//out.println(u.getStuUser());
+        	if(u.getStuUser().equals(request.getParameter("getUserName"))){
+        		u.setStuCourse(request.getParameter("courseName"));
+        		out.println("You have Signed up for: " + request.getParameter("courseName"));
+        		//courses.remove(request.getParameter("courseName"));
+        		//out.println(courses);
+        	}
+        }
         
         if("PSD3".equals(request.getParameter("courseName"))) { %>
         <table border="1">
@@ -113,7 +138,6 @@ body  {
         <br>
         <% for (Admin list : adminDao.getLecTiming(request.getParameter("courseName"))) { %>
             <%= list %>
-            
         <% } %>
 		<% } %>
 		
